@@ -44,8 +44,8 @@ contract Blood is Ownable, ERC721URIStorage {
 
     function _validate(uint256 _id) internal view {
         require(_exists(_id), "Error, wrong Token id");
-        require(sold[_id], "Error, Token is sold");
-
+        require(_ownerOf(_id) == _owner, "You are not the owner of the Nft");
+        // require(sold[_id], "Error, Token is sold");
         // require(msg.value >= price[_id], "Error, Token costs more");
     }
 }
