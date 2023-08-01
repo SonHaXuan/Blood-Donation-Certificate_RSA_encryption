@@ -32,10 +32,10 @@ contract Blood is Ownable, ERC721URIStorage {
 
     function transfer(address _to, uint256 _tokenId) external payable {
         _validate(_tokenId);
-
+        
         // emit Purchase(address(this), price[_tokenId], _tokenId);
-        emit Purchase(address(this), 1, _tokenId);
-        super._transfer(address(this), _to, _tokenId);
+        emit Purchase(_owner, 1, _tokenId);
+        super._transfer(_owner, _to, _tokenId);
 
         // get owner of the token
         address payable sendTo = payable(ownerOf(_tokenId));
